@@ -1,0 +1,176 @@
+@charset "utf-8";
+
+
+/*###########################################################################*/
+div.c_page {
+  position: relative; display: block;
+  width: 600px; height: 600px;
+  margin: 0px 0px 10px 0px; padding: 0px;
+  background-color: #1e1f21e1;
+  font-size: 0px;
+  overflow: hidden;
+  box-shadow: 3px 3px 3px black;
+}
+
+div.c_page > div.c_round {
+  position: static; display: block;
+  width: 100%; height: calc(100% - 200px);
+}
+
+div.c_round > svg.c_svg {
+  position: static; display: block;
+  width: calc(100% - 10px); height: calc(100% - 10px);
+  background-color: darkslategrey;
+  margin: 5px; padding: 0px;
+  box-sizing: border-box;
+  border: 0px solid transparent;
+  cursor: pointer;
+}
+
+div.c_page > div.c_foot {
+  position: static; display: block;
+  width: 100%; height: 200px;
+}
+
+div.c_foot > textarea.c_tam {
+  position: static; display: block;
+  width: calc(100% - 10px); height: calc(100% - 30px);
+  margin: 0px 0px 0px 5px; padding: 3px;
+  background-color: rgb(184, 184, 184);
+  box-sizing: border-box;
+  border: 2px solid darkslategrey;
+  font-family: Consolas, 'Malgun Gothic';
+  font-size: 12px;
+  resize: none;
+}
+
+div.c_foot > textarea.c_tam:focus {
+  outline: none;
+}
+
+div.c_foot > div.c_btc {
+  position: absolute; display: block;
+  width: auto; height: auto;
+  overflow: auto; font-size: 0px;
+  white-space: nowrap;
+  right: 7px; bottom: 5px;
+}
+
+div.c_btc > button.c_bt {
+  background-color: #3d4042;
+  color: whitesmoke;
+  box-sizing: border-box;
+  border: 1px dashed transparent;
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 3px;
+  transition: border-color 0.3s ease-out;
+}
+
+div.c_btc > button.c_bt:hover {
+  transition-duration: 0s;
+  border-color: thistle;
+}
+
+div.c_btc > button.c_bt > span {
+  position: static; display: inline-block;
+  width: auto; height: auto;
+  padding: 0px 1px 1px 1px;
+  pointer-events: none;
+  font-family: 'Consolas', 'monaco', 'monospace';
+  font-size: 11px;
+}
+
+div.c_btc > button.c_bt:active > span {
+  transform: translate(1px, 1px);
+}
+
+
+/*###########################################################################*/
+div.c_page > textarea.c_tam {
+  position: static; display: block;
+  width: calc(100% - 10px); height: calc(100% - 35px);
+  margin: 5px; padding: 3px;
+  background-color: rgb(184, 184, 184);
+  box-sizing: border-box;
+  border: 2px solid darkslategrey;
+  font-family: Consolas, "Malgun Gothic";
+  font-size: 12px;
+  resize: none;
+}
+
+div.c_page > textarea.c_tam:focus {
+  outline: none;
+}
+
+div.c_page > div.c_btc {
+  position: absolute; display: block;
+  width: auto; height: auto;
+  overflow: auto; font-size: 0px;
+  white-space: nowrap;
+  right: 7px; bottom: 5px;
+}
+
+
+
+/* div.c_btc > button.c_bt {
+  background-color: #3d4042;
+  color: whitesmoke;
+  box-sizing: border-box;
+  border: 1px dashed transparent;
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 3px;
+  transition: border-color 0.3s ease-out;
+}
+
+div.c_btc > button.c_bt:hover {
+  transition-duration: 0s;
+  border-color: thistle;
+}
+
+div.c_btc > button.c_bt > span {
+  position: static; display: none;
+  width: auto;
+  height: auto;
+  padding: 0px 1px 0px 1px;
+  pointer-events: none;
+}
+
+div.c_btc > button.c_bt:active > span {
+  transform: translate(1px, 1px);
+} */
+
+
+/*###########################################################################*/
+div.c_round > div.c_scroll-cont {
+  position: relative; display: block;
+  width: calc(100% - 10px); height: calc(100% - 10px);
+  background-color: darkslategrey;
+  margin: 5px; padding: 0px;
+  box-sizing: border-box;
+  border: 0px solid transparent;
+  cursor: auto;
+}
+
+div.c_round > div.c_scroll-cont > div#vscr {
+  position: absolute; display: block;
+  width: 30px; height: 300px;
+  background-color: darkblue;
+  margin: 0px; padding: 0px;
+  box-sizing: border-box;
+  border: 0px solid transparent;
+  cursor: pointer;
+  left: 100px; top: 50px;
+}
+
+div.c_round > div.c_scroll-cont > div#hscr {
+  position: absolute; display: block;
+  width: 300px; height: 30px;
+  background-color: darkblue;
+  margin: 0px; padding: 0px;
+  box-sizing: border-box;
+  border: 0px solid transparent;
+  cursor: pointer;
+  left: 150px; top: 200px;
+}
