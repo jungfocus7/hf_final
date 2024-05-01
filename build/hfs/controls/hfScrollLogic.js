@@ -1,4 +1,3 @@
-
 import { eventTypes } from "../hfcom";
 import { fn_containsRect, fn_getRect, fn_setHeight, fn_setLeft, fn_setTop, fn_setWidth, fn_updateRect } from "./hfStyleFunctions";
 var ScrollLogicType;
@@ -81,9 +80,6 @@ font-size: 0px; cursor: pointer;
     #scrollPositionRatio = 0.0;
     /** @type {number} */
     #mdp = NaN;
-    /** @type {string} */
-    #gnm
-
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * ???
@@ -94,9 +90,6 @@ font-size: 0px; cursor: pointer;
         this.#elSpan.innerText = `${ssr.toFixed(1)}%/${spr.toFixed(1)}%`;
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /**
-     * GroundCheckSize
-     */
     get #groundCheckSize() {
         let rv = 0.0;
         if (this.#logicType === ScrollLogicType.VERTICAL)
@@ -154,7 +147,7 @@ font-size: 0px; cursor: pointer;
             fn_setLeft(el, val);
     }
     /**
-     * ??
+     * 스크롤 사이즈 계산
      * @returns {number}
      */
     #fn_getScrollSize() {
@@ -340,7 +333,11 @@ font-size: 0px; cursor: pointer;
             this.#fn_mouseUp();
             return;
         }
+        if (this.#scrollSizeRatio === 1.0)
+            return;
         const cv = this.#fn_clientValue(e) - this.#mdp;
+        // console.log('대기열: ', cv
+        //     , this.#scrollPositionRatio, this.#scrollSizeRatio);
         this.#fn_setThumbPosition(cv);
         this.#fn_printSpanLog();
         this.dispatchEvent(new Event(eventTypes.SCROLL));

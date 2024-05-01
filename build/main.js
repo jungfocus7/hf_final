@@ -50,7 +50,7 @@ const fn_pagesPositiontOrder = () => {
         _pageContainer.appendChild(he);
     }
 };
-const _twr = new Tween(0, 36, easeBounce.easeOut);
+const _twr = new Tween(0, 36 * 2, easeBounce.easeOut);
 _twr.addEventListener(eventTypes.UPDATE, (e) => {
     _pageContainer.scrollTo(0, _twr.current);
 });
@@ -109,3 +109,4 @@ _pageDataArr.push(_page5);
 //#endregion
 fn_createMenuAll();
 fn_createPageAll();
+fn_scrollJump(_pageDataArr?.at(-1)?.pageElement);

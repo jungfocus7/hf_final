@@ -61,7 +61,7 @@ const fn_createPage = () => {
         let elTarget = rt.pageContainer.querySelector('#vscr');
         // dcs.log('elTarget: ', elTarget);
         rt._vscr = new ScrollLogic({ logicType: ScrollLogicType.VERTICAL, target: elTarget });
-        rt._vscr.fn_setScrollSizeRatio(0.7);
+        rt._vscr.fn_setScrollSizeRatio(0.3);
         rt._vscr.addEventListener(eventTypes.SCROLL, () => {
             const spr = rt._vscr.fn_getScrollPositionRatio();
             rt.fn_print(`${ScrollLogicType.VERTICAL}: ${spr}`);
@@ -69,7 +69,7 @@ const fn_createPage = () => {
         elTarget = rt.pageContainer.querySelector('#hscr');
         // dcs.log('elTarget: ', elTarget);
         rt._hscr = new ScrollLogic({ logicType: ScrollLogicType.HORIZONTAL, target: elTarget });
-        rt._hscr.fn_setScrollSizeRatio(0.3);
+        rt._hscr.fn_setScrollSizeRatio(0.7);
         rt._hscr.addEventListener(eventTypes.SCROLL, () => {
             const spr = rt._hscr.fn_getScrollPositionRatio();
             rt.fn_print(`${ScrollLogicType.HORIZONTAL}: ${spr}`);

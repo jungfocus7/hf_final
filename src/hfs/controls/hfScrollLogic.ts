@@ -88,6 +88,7 @@ font-size: 0px; cursor: pointer;
     /** @type {HTMLSpanElement} */
     #elSpan: HTMLSpanElement = null!;
 
+
     /** @type {DOMRect} */
     #rctGround: DOMRect = null!;
 

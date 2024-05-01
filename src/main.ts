@@ -70,7 +70,7 @@ const fn_pagesPositiontOrder = (): void => {
     }
 }
 
-const _twr: Tween = new Tween(0, 36, easeBounce.easeOut);
+const _twr: Tween = new Tween(0, 36*2, easeBounce.easeOut);
 _twr.addEventListener(eventTypes.UPDATE, (e: Event): void => {
     _pageContainer.scrollTo(0, _twr.current);
 });
