@@ -65,7 +65,7 @@ const fn_createPage = (): void => {
 
         rt.pageElement = rt.pageContainer.querySelector<HTMLDivElement>('div.c_page:last-child')!;
         // dcs.log('rt.pageElement: ', rt.pageElement);
-        rt.fn_pagesPositiontOrder?.();
+        rt.fn_pagesPositionOrder?.();
 
         rt.textArea = rt.pageElement.querySelector<HTMLTextAreaElement>('textarea.c_tam')!
         // dcs.log('rt.textArea: ', rt.textArea);
@@ -151,7 +151,7 @@ export const _page5: IPage5 = Object.seal({
     fn_stop,
 
     fn_scrollJump: null!,
-    fn_pagesPositiontOrder: null!,
+    fn_pagesPositionOrder: null!,
 
     //~~extends
     textArea: null!,

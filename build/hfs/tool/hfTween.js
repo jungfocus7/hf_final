@@ -125,12 +125,6 @@ export const easeExponential = Object.freeze({
 });
 ;
 class Tween extends EventTarget {
-    /**
-     * Tween 객체
-     * @param current
-     * @param duration
-     * @param ease
-     */
     constructor(current = 0, duration = 36, ease = null) {
         super();
         this._running = false;
@@ -145,42 +139,34 @@ class Tween extends EventTarget {
         Object.seal(this);
     }
     _running;
-    /** 작동중인 여부 */
     get running() {
         return this._running;
     }
     _begin;
-    /** 시작값 */
     get begin() {
         return this._begin;
     }
     _end;
-    /** 끝값 */
     get end() {
         return this._end;
     }
-    /** 변화량 */
     _diff;
     get diff() {
         return this._diff;
     }
     _current;
-    /** 현재값 */
     get current() {
         return this._current;
     }
     _time;
-    /** 시간값 */
     get time() {
         return this._time;
     }
     _duration;
-    /** 진행시간 */
     get duration() {
         return this._duration;
     }
     _ease;
-    /** 이징함수 */
     get ease() {
         return this._ease;
     }
@@ -204,7 +190,6 @@ class Tween extends EventTarget {
         if (this._time < this._duration) {
             ++this._time;
             this._current = this._ease(this._time, this._begin, this._diff, this._duration);
-            // console.log(time, this._time, this._current);
             this.dispatchEvent(new Event(eventTypes.UPDATE));
             if (this._time >= this._duration) {
                 this.dispatchEvent(new Event(eventTypes.END));
@@ -213,20 +198,12 @@ class Tween extends EventTarget {
         }
         this.fn_enterFrame();
     }
-    /**
-     * 프래임 정지
-     */
     stop() {
         if (this._running === true) {
             this.fn_clearFrame();
             this._running = false;
         }
     }
-    /**
-     * 프래임 시작에서 끝으로
-     * @param begin
-     * @param end
-     */
     fromTo(begin, end) {
         if (this._running === true)
             this.stop();
@@ -238,10 +215,6 @@ class Tween extends EventTarget {
         this._running = true;
         this.fn_enterFrame();
     }
-    /**
-     * 프래임 끝으로
-     * @param end
-     */
     to(end) {
         this.fromTo(this._current, end);
     }
@@ -249,4 +222,3 @@ class Tween extends EventTarget {
 ;
 Object.freeze(Tween);
 export { Tween };
-//#endregion

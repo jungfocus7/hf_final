@@ -13,22 +13,18 @@ class Weich extends EventTarget {
         Object.seal(this);
     }
     _running;
-    /** 작동중인 여부 */
     get running() {
         return this._running;
     }
     _end;
-    /** 끝값 */
     get end() {
         return this._end;
     }
     _now;
-    /** 현재 */
     get now() {
         return this._now;
     }
     _speed;
-    /** 속도 */
     get speed() {
         return this._speed;
     }
@@ -61,21 +57,12 @@ class Weich extends EventTarget {
         }
         this.fn_enterFrame();
     }
-    /**
-     * 프래임 정지
-     */
     stop() {
         if (this._running === true) {
             this.fn_clearFrame();
             this._running = false;
         }
     }
-    /**
-     * 프래임 시작에서 끝으로
-     * @param end
-     * @param now
-     * @param speed
-     */
     fromTo(end, now, speed = NaN) {
         if (this._running === true)
             this.stop();
@@ -86,15 +73,9 @@ class Weich extends EventTarget {
         this._running = true;
         this.fn_enterFrame();
     }
-    /**
-     * 프래임 끝으로
-     * @param end
-     * @param speed
-     */
     to(end, speed = NaN) {
         this.fromTo(end, this._now, speed);
     }
 }
 Object.freeze(Weich);
 export { Weich };
-//#endregion

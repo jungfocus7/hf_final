@@ -11,5 +11,5 @@ export interface IPageData {
     fn_stop: () => void;
 
     fn_scrollJump: (he: HTMLElement) => void;
-    fn_pagesPositiontOrder: () => void;
+    fn_pagesPositionOrder: () => void;
 };

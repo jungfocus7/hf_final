@@ -55,3 +55,8 @@ export const eventTypes = Object.freeze({
     UPDATE: 'update',
     END: 'end'
 });
+
+
+export default {
+    dcs, eventTypes
+};

@@ -33,7 +33,7 @@ div.c_rootContainer {
 }
 
 div.c_rootContainer > div.c_leftMenuContainer {
-  position: static; display: inline-block;
+  position: relative; display: inline-block;
   background-color: rgba(0, 0, 0, 0.75);
   width: 200px; height: 100%;
   box-sizing: border-box;

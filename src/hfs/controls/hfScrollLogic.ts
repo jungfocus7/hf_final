@@ -1,5 +1,7 @@
 import { eventTypes } from "../hfcom";
-import { StyleInputTarget, fn_containsRect, fn_getRect, fn_setHeight, fn_setLeft, fn_setTop, fn_setWidth, fn_updateRect } from "./hfStyleFunctions";
+import { StyleInputTarget, fn_containsRect, fn_getRect,
+    fn_setHeight, fn_setLeft, fn_setTop, fn_setWidth,
+    fn_updateRect } from "./hfStyleFunctions";
 
 
 enum ScrollLogicType {

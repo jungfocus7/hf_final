@@ -2,10 +2,6 @@ import { dcs, eventTypes } from "../hfs/hfcom";
 import { fn_isNum, fn_notNum, fn_isFloat, fn_isMinus, fn_isOdd, fn_isEven, fn_randRange } from "../hfs/hfnum";
 import { fn_isStr, fn_notStr, fn_getLastNum, fn_str2Ab, fn_ab2Str } from "../hfs/hfstr";
 import { fn_isArr, fn_notArr, fn_contains, fn_shuffle, fn_copy } from "../hfs/hfarr";
-/**
- * 메뉴 생성
- * @returns
- */
 const fn_createMenu = () => {
     const rt = _page1;
     if (rt.buttonElement !== null) {
@@ -17,17 +13,12 @@ const fn_createMenu = () => {
 <button type="button" class="c_bt"><span>01) hfcom</span></button>`.trim();
         rt.leftMenuContainer.insertAdjacentHTML('beforeend', htmlButtonTag);
         rt.buttonElement = rt.leftMenuContainer.querySelector('button.c_bt:last-child');
-        // dcs.log('#rt.buttonElement:', rt.buttonElement);
         rt.buttonElement.addEventListener(eventTypes.CLICK, (e) => {
             rt.fn_createPage();
         });
         dcs.log('# 메뉴 생성완료');
     }
 };
-/**
- * 페이지 생성
- * @returns
- */
 const fn_createPage = () => {
     const rt = _page1;
     if (rt.pageElement !== null) {
@@ -49,7 +40,7 @@ const fn_createPage = () => {
         `.trim();
         rt.pageContainer.insertAdjacentHTML('beforeend', htmlPageTag);
         rt.pageElement = rt.pageContainer.querySelector('div.c_page:last-child');
-        rt.fn_pagesPositiontOrder?.();
+        rt.fn_pagesPositionOrder?.();
         rt.textArea = rt.pageElement.querySelector('textarea.c_tam');
         const btns = rt.pageElement.querySelectorAll('div.c_btc > button.c_bt');
         rt.footerButtons = Array.from(btns);
@@ -213,20 +204,11 @@ const fn_createPage = () => {
         fn_btnClick1();
         fn_btnClick2();
         fn_btnClick3();
-        // rt.fn_scrollJump?.(rt.pageElement);
         dcs.log('# 페이지 생성완료');
     }
 };
-/**
- * 작업중지
- */
 const fn_stop = () => {
 };
-/**
- * 기능출력
- * @param msg
- * @returns
- */
 const fn_print = (msg = null) => {
     const rt = _page1;
     if (msg === null) {
@@ -249,8 +231,7 @@ export const _page1 = Object.seal({
     fn_createPage,
     fn_stop,
     fn_scrollJump: null,
-    fn_pagesPositiontOrder: null,
-    //~~extends
+    fn_pagesPositionOrder: null,
     textArea: null,
     fn_print,
     footerButtons: null,

@@ -55,3 +55,10 @@ export const fn_str2Ab = (val: string): Uint16Array => {
 export const fn_ab2Str = (ab: Uint16Array): String => {
     return String.fromCharCode.apply(null, Array.from(ab));
 };
+
+
+export default {
+    fn_isStr, fn_notStr,
+    fn_getLastNum,
+    fn_str2Ab, fn_ab2Str,
+};

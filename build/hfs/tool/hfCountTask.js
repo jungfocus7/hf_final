@@ -1,4 +1,3 @@
-//#region ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 1) hfCountTask
 class hfCountTask {
     constructor(countStart = 1, countEnd = 10, plusValue = 1) {
         this.#countStart = countStart;
@@ -50,4 +49,3 @@ class hfCountTask {
 }
 Object.freeze(hfCountTask);
 export { hfCountTask };
-//#endregion

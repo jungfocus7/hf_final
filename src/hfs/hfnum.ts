@@ -70,3 +70,10 @@ export const fn_random = (val: number): number => {
 export const fn_randRange = (min: number, max: number): number => {
     return min + Math.round(Math.random() * (max - min));
 };
+
+
+export default {
+    fn_isNum, fn_notNum, fn_isFloat, fn_isMinus,
+    fn_isOdd, fn_isEven,
+    fn_random, fn_randRange,
+};

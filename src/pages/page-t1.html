@@ -51,7 +51,7 @@
 
 
 
-<div class="c_page">
+<!-- <div class="c_page">
   <div class="c_round">
       <span class="c_nm">Tester__hfTween</span>
       <svg class="c_svg">
@@ -68,12 +68,39 @@
           <button type="button" class="c_bt"><span>#05</span></button>
       </div>
   </div>
+</div> -->
+
+<div class="ppo-x">
+  xxxxxx
+  <span class="moobt"></span>
 </div>
 
-<link rel="stylesheet" crossorigin href="./main.css">
-<link rel="stylesheet" crossorigin href="./page-com.css">
+<style>
+  div.ppo-x {
+    position: relative; display: inline-block;
+    background-color: red;
+    width: 200px; height: 100px;
+  }
+  div.ppo-x > span {
+    position: absolute; display: inline-block;
+    background-color: rgba(0, 100, 0, 0.35);
+    width: 20px; height: 15px;
+    right: 0px; bottom: 0px;
+    cursor: pointer;
+    border-radius: 5px 0px 0px 5px;
+  }
+</style>
+
+
+<!-- <link rel="stylesheet" crossorigin href="./main.css">
+<link rel="stylesheet" crossorigin href="./page-com.css"> -->
 <script>
   //alert(1004);
+
+  const moobt = document.querySelector('div.ppo-x > span');
+  moobt.addEventListener('click', (e) => {
+    console.log(Object.getOwnPropertyDescriptors(e));
+  });
 </script>
 
 </body>

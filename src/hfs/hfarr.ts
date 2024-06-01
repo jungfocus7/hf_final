@@ -63,3 +63,8 @@ export const fn_copy = (arr: Array<unknown>): Array<unknown> => {
     if (fn_notArr(arr)) return null!;
     return arr.slice();
 };
+
+
+export default {
+    fn_isArr, fn_notArr, fn_contains, fn_shuffle, fn_copy
+};

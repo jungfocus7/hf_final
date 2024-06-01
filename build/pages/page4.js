@@ -1,9 +1,5 @@
 import { dcs, eventTypes } from "../hfs/hfcom";
 import { Weich } from "../hfs/tool/hfWeich";
-/**
- * 메뉴 생성
- * @returns
- */
 const fn_createMenu = () => {
     const rt = _page4;
     if (rt.buttonElement !== null) {
@@ -15,17 +11,12 @@ const fn_createMenu = () => {
 <button type="button" class="c_bt"><span>04) hfWeich</span></button>`.trim();
         rt.leftMenuContainer.insertAdjacentHTML('beforeend', htmlButtonTag);
         rt.buttonElement = rt.leftMenuContainer.querySelector('button.c_bt:last-child');
-        // dcs.log('#rt.buttonElement:', rt.buttonElement);
         rt.buttonElement.addEventListener(eventTypes.CLICK, (e) => {
             rt.fn_createPage();
         });
         dcs.log('# 메뉴 생성완료');
     }
 };
-/**
- * 페이지 생성
- * @returns
- */
 const fn_createPage = () => {
     const rt = _page4;
     if (rt.pageElement !== null) {
@@ -53,13 +44,10 @@ const fn_createPage = () => {
         `.trim();
         rt.pageContainer.insertAdjacentHTML('beforeend', htmlPageTag);
         rt.pageElement = rt.pageContainer.querySelector('div.c_page:last-child');
-        // dcs.log('rt.pageElement: ', rt.pageElement);
-        rt.fn_pagesPositiontOrder?.();
+        rt.fn_pagesPositionOrder?.();
         rt.textArea = rt.pageElement.querySelector('textarea.c_tam');
         rt._svgContainer = rt.pageElement.querySelector('svg.c_svg');
-        // dcs.log('rt._svgContainer: ', rt._svgContainer);
         rt._scc = rt._svgContainer.querySelector('circle#scc');
-        // dcs.log('rt._scc: ', rt._scc);
         rt._ex = ~~rt._scc.getAttribute('cx');
         rt._ey = ~~rt._scc.getAttribute('cy');
         rt._twx = new Weich(rt._ex, 0.15);
@@ -108,20 +96,11 @@ const fn_createPage = () => {
             rt._twx.stop();
             rt._twy.stop();
         });
-        // rt.fn_scrollJump?.(rt.pageElement);
         dcs.log('# 페이지 생성완료');
     }
 };
-/**
- * 작업중지
- */
 const fn_stop = () => {
 };
-/**
- * 기능출력
- * @param msg
- * @returns
- */
 const fn_print = (msg = null) => {
     const rt = _page4;
     if (msg === null) {
@@ -144,8 +123,7 @@ export const _page4 = Object.seal({
     fn_createPage,
     fn_stop,
     fn_scrollJump: null,
-    fn_pagesPositiontOrder: null,
-    //~~extends
+    fn_pagesPositionOrder: null,
     textArea: null,
     fn_print,
     _svgContainer: null,

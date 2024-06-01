@@ -1,9 +1,5 @@
 import { dcs, eventTypes } from "../hfs/hfcom";
 import { hfCountTask } from "../hfs/tool/hfCountTask";
-/**
- * 메뉴 생성
- * @returns
- */
 const fn_createMenu = () => {
     const rt = _page2;
     if (rt.buttonElement !== null) {
@@ -15,17 +11,12 @@ const fn_createMenu = () => {
 <button type="button" class="c_bt"><span>02) hfCountTask</span></button>`.trim();
         rt.leftMenuContainer.insertAdjacentHTML('beforeend', htmlButtonTag);
         rt.buttonElement = rt.leftMenuContainer.querySelector('button.c_bt:last-child');
-        // dcs.log('#rt.buttonElement:', rt.buttonElement);
         rt.buttonElement.addEventListener(eventTypes.CLICK, (e) => {
             rt.fn_createPage();
         });
         dcs.log('# 메뉴 생성완료');
     }
 };
-/**
- * 페이지 생성
- * @returns
- */
 const fn_createPage = () => {
     const rt = _page2;
     if (rt.pageElement !== null) {
@@ -47,7 +38,7 @@ const fn_createPage = () => {
         `.trim();
         rt.pageContainer.insertAdjacentHTML('beforeend', htmlPageTag);
         rt.pageElement = rt.pageContainer.querySelector('div.c_page:last-child');
-        rt.fn_pagesPositiontOrder?.();
+        rt.fn_pagesPositionOrder?.();
         rt.textArea = rt.pageElement.querySelector('textarea.c_tam');
         rt._ct = new hfCountTask(35, 55, 3);
         rt.fn_print(`countStart: ${rt._ct.countStart};`);
@@ -84,20 +75,11 @@ const fn_createPage = () => {
             rt.fn_print(`count: ${rt._ct.count};`);
             rt.fn_print('');
         });
-        // rt.fn_scrollJump?.(rt.pageElement);
         dcs.log('# 페이지 생성완료');
     }
 };
-/**
- * 작업중지
- */
 const fn_stop = () => {
 };
-/**
- * 기능출력
- * @param msg
- * @returns
- */
 const fn_print = (msg = null) => {
     const rt = _page2;
     if (msg === null) {
@@ -120,8 +102,7 @@ export const _page2 = Object.seal({
     fn_createPage,
     fn_stop,
     fn_scrollJump: null,
-    fn_pagesPositiontOrder: null,
-    //~~extends
+    fn_pagesPositionOrder: null,
     textArea: null,
     fn_print,
     _ct: null,

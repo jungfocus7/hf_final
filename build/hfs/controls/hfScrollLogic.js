@@ -60,36 +60,21 @@ font-size: 0px; cursor: pointer;
         window.addEventListener(eventTypes.RESIZE, this.#fn_resize);
         Object.seal(this);
     }
-    /** @type {number} */
     static #MINV = 30.0;
-    /** @type {ScrollLogicType} */
     #logicType = null;
-    /** @type {HTMLDivElement} */
     #elTarget = null;
-    /** @type {HTMLDivElement} */
     #elThumb = null;
-    /** @type {HTMLSpanElement} */
     #elSpan = null;
-    /** @type {DOMRect} */
     #rctGround = null;
-    /** @type {DOMRect} */
     #rctThumb = null;
-    /** @type {number} */
     #scrollSizeRatio = 1.0;
-    /** @type {number} */
     #scrollPositionRatio = 0.0;
-    /** @type {number} */
     #mdp = NaN;
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /**
-     * ???
-     */
     #fn_printSpanLog() {
         const ssr = 100 * this.#scrollSizeRatio;
         const spr = 100 * this.#scrollPositionRatio;
         this.#elSpan.innerText = `${ssr.toFixed(1)}%/${spr.toFixed(1)}%`;
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
     get #groundCheckSize() {
         let rv = 0.0;
         if (this.#logicType === ScrollLogicType.VERTICAL)
@@ -146,21 +131,12 @@ font-size: 0px; cursor: pointer;
         else if (this.#logicType === ScrollLogicType.HORIZONTAL)
             fn_setLeft(el, val);
     }
-    /**
-     * 스크롤 사이즈 계산
-     * @returns {number}
-     */
     #fn_getScrollSize() {
         let ss = this.#groundCheckSize - this.#thumbCheckSize;
         if (ss < 0.0)
             ss = 0.0;
         return ss;
     }
-    /**
-     * Thumb 사이즈 설정
-     * @param {number} val
-     * @param {boolean} bApply
-     */
     #fn_setThumbSize(val, bApply = true) {
         if (val === this.#thumbCheckSize)
             return;
@@ -179,11 +155,6 @@ font-size: 0px; cursor: pointer;
             this.#fn_setCheckLocation(this.#elThumb, this.#thumbCheckLocation);
         }
     }
-    /**
-     * Thumb 포지션 설정
-     * @param {number} val
-     * @param {boolean} bApply
-     */
     #fn_setThumbPosition(val, bApply = true) {
         if (val === this.#thumbCheckLocation)
             return;
@@ -202,11 +173,6 @@ font-size: 0px; cursor: pointer;
         if (bApply === true)
             this.#fn_setCheckLocation(this.#elThumb, this.#thumbCheckLocation);
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /**
-     * 스크롤 사이즈 비율 반환
-     * @returns {number}
-     */
     fn_getScrollSizeRatio() {
         let rv = this.#scrollSizeRatio;
         if (Number.isFinite(rv) === false)
@@ -219,11 +185,6 @@ font-size: 0px; cursor: pointer;
         }
         return rv;
     }
-    /**
-     * 스크롤 사이즈 비율 설정
-     * @param {number} val
-     * @param {boolean} bApply
-     */
     fn_setScrollSizeRatio(val, bApply = true) {
         if (Number.isFinite(val) === false)
             val = 0.0;
@@ -238,11 +199,6 @@ font-size: 0px; cursor: pointer;
         this.#fn_setThumbSize(sz, bApply);
         this.#fn_printSpanLog();
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /**
-     * 스크롤 포지션 비율 반환
-     * @returns {number}
-     */
     fn_getScrollPositionRatio() {
         let rv = this.#scrollPositionRatio;
         if (Number.isFinite(rv) === false)
@@ -255,11 +211,6 @@ font-size: 0px; cursor: pointer;
         }
         return rv;
     }
-    /**
-     * 스크롤 포지션 비율 설정
-     * @param {number} val
-     * @param {boolean} bApply
-     */
     fn_setScrollPositionRatio(val, bApply = true) {
         if (Number.isFinite(val) === false)
             val = 0.0;
@@ -284,11 +235,6 @@ font-size: 0px; cursor: pointer;
         if (bApply === true)
             this.#fn_setCheckLocation(this.#elThumb, this.#thumbCheckLocation);
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /**
-     * 리사이즈 후 업데이트
-     * @param {boolean} bApply
-     */
     #fn_updateAfterResized(bApply = true) {
         const bv = ScrollLogic.#MINV;
         const ev = this.#groundCheckSize;
@@ -306,7 +252,6 @@ font-size: 0px; cursor: pointer;
         }
         this.#fn_printSpanLog();
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
     #fn_clientValue(e) {
         let rv = 0.0;
         if (this.#logicType === ScrollLogicType.VERTICAL)
@@ -323,11 +268,6 @@ font-size: 0px; cursor: pointer;
             rv = e.offsetX;
         return rv;
     }
-    /**
-     * MOUSE_MOVE
-     * @param {MouseEvent} e
-     * @returns {void}
-     */
     #fn_mouseMove = (e) => {
         if (e.buttons !== 1) {
             this.#fn_mouseUp();
@@ -336,26 +276,15 @@ font-size: 0px; cursor: pointer;
         if (this.#scrollSizeRatio === 1.0)
             return;
         const cv = this.#fn_clientValue(e) - this.#mdp;
-        // console.log('대기열: ', cv
-        //     , this.#scrollPositionRatio, this.#scrollSizeRatio);
         this.#fn_setThumbPosition(cv);
         this.#fn_printSpanLog();
         this.dispatchEvent(new Event(eventTypes.SCROLL));
     };
-    /**
-     * MOUSE_UP
-     * @param {Event} e
-     * @returns {void}
-     */
     #fn_mouseUp = (e) => {
         window.removeEventListener(eventTypes.MOUSE_MOVE, this.#fn_mouseMove);
         window.removeEventListener(eventTypes.MOUSE_UP, this.#fn_mouseUp);
         window.removeEventListener(eventTypes.BLUR, this.#fn_mouseUp);
     };
-    /**
-     * MOUSE_DOWN
-     * @param {MouseEvent} e
-     */
     #fn_mouseDown = (e) => {
         if (e.button !== 0)
             return;
@@ -374,10 +303,6 @@ font-size: 0px; cursor: pointer;
             this.dispatchEvent(new Event(eventTypes.SCROLL));
         }
     };
-    /**
-     * RESIZE
-     * @param {Event} e
-     */
     #fn_resize = (e) => {
         fn_updateRect(this.#elTarget, this.#rctGround);
         this.#fn_updateAfterResized();
